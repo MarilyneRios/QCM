@@ -21,6 +21,7 @@ h1{
     width: 100wv;
     height: 100vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;/*axe horizontal*/
     align-items: center; /*axe vertical*/
     max-width: 80rem; /*80 fois la taille de la police de la racine*/
@@ -36,7 +37,7 @@ h1{
 .flex-center{
     justify-content: center;
     align-items: center;
-    border: 1px solid black;
+    border: 1px solid #fff;
     text-align: center;
 }
 
