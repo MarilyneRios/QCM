@@ -1,11 +1,67 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="/css/game.css">
+    
+
+    <!-- description pour le référencement<header> -->
+    <meta name="description" content="aide à l'apprentissage des leçons un QCM">
+
+    <!-- rajouter un petit icon en haut à gauche <header> -->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+    
+
+    <title>Game page</title>
 </head>
 <body>
-    
+    <header></header>
+    <main>
+
+        <div class="container">
+            <div id="game" class="justify-center flex-column">
+                <div class="hud-item">
+                    <p id="progreeText" class="hud-prefix">
+                        question
+                    </p>
+                    <div id="progressBar">
+                        <div id="progreesBarFull"></div>
+                    </div>
+                </div> 
+                <div class="hud-item">
+                    <p class="hud-prefix">
+                        Score
+                    </p>
+                    <h1 class="hud-main-text" id="score">
+                        0
+                    </h1>
+                </div>
+            </div>
+            <div id="question">Quel est la réponse à cette question</div>
+            <div class="choice-contenaire">
+                <P class="choice-prefix">A</p>
+                <P class="choice-text" data-number="1">choice</p>
+            </div>
+            <div class="choice-contenaire">
+                <P class="choice-prefix">B</p>
+                <P class="choice-text" data-number="1">choice</p>
+            </div>
+            <div class="choice-contenaire">
+                <P class="choice-prefix">c</p>
+                <P class="choice-text" data-number="1">choice</p>
+            </div>
+            <div class="choice-contenaire">
+                <P class="choice-prefix">D</p>
+                <P class="choice-text" data-number="1">choice</p>
+            </div>
+        </div>
+      
+    </main>
+    <footer></footer>
 </body>
 </html>
