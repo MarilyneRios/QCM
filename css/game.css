@@ -3,5 +3,33 @@ body{
     display: flex;
     flex-direction: column;
 }
+#question{
+    margin-bottom: 0.9rem ;
+    margin-top: 0.9rem ;
+    font-size: 3rem;
+    width: 100%;
+}
+.choice-container {
+    display: flex;
+    margin-bottom: 0.9rem ;
+    width: 100%;
+    border-radius: 4px;
+    background: rgb(8, 53, 151);
+    font-size: 3rem;
+    min-width: 80rem;
+}
 
+.choice-container:hover {
+    cursor: pointer;
+    box-shadow: 0 0.4rem 1.4rem rgba(6, 103, 247, 0.5);
+    transform: scale (1.02) translate(100ms);
+}
 
+.choice-prefix {
+    padding: 2rem 2.5rem;
+}
+
+.Choice-text {
+    padding: 2rem ;
+    width: 100%;
+}
