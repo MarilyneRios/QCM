@@ -1,7 +1,15 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 body{
     color: #fff;
     display: flex;
     flex-direction: column;
+}
+#game {
+    margin: 20px;
 }
 #question{
     margin-bottom: 0.9rem ;
@@ -11,6 +19,8 @@ body{
 }
 .choice-container {
     display: flex;
+    flex-direction: row;
+    align-items: center;
     margin-bottom: 0.9rem ;
     width: 100%;
     border-radius: 4px;
@@ -26,10 +36,57 @@ body{
 }
 
 .choice-prefix {
-    padding: 2rem 2.5rem;
+    padding: 1.5rem ;
 }
 
 .Choice-text {
-    padding: 2rem ;
+    padding: 1.5rem ;
     width: 100%;
+}
+
+.correct {
+    background: linear-gradient(32deg, rgba(11,223,36)0%, rgb(41,232,111)100%);
+}
+
+.incorrect {
+    background: linear-gradient(32deg, rgb(124, 18, 18)0%,rgb(157, 7, 7)100%);
+}
+
+/*affichage en haut*/
+
+#hud{
+    display: flex;
+    justify-content: space-between;
+}
+
+.hud-prefix{
+    text-align: center;
+    font-size: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.hud-main-text {
+    text-align: center;
+}
+
+#progressBar {
+    width: 20rem;
+    height: 3rem;
+    border: 0.2rem solid rgb(11,223,36);
+    margin-top: 2rem;
+    border-radius: 50px;
+    overflow: hidden;
+}
+
+#progressBarFull {
+    height: 100%;
+    background:rgb(11,223,36);
+    width: 0%;
+}
+
+@media screen  and (max-width: 780px){
+    .choice-container{
+        min-width: 40rem;
+    }
 }

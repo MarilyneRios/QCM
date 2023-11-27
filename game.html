@@ -1,69 +1,64 @@
 <!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="fr"> 
+<head> <!-- Contient les informations générales sur le document -->
+    <meta charset="UTF-8"> <!-- Spécifie l'encodage des caractères utilisé -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Permet d'adapter la mise en page à la taille de l'écran -->
     <link rel="stylesheet" type="text/css" href="./css/style.css">
     <link rel="stylesheet" type="text/css" href="./css/game.css">
-    
 
     <!-- description pour le référencement<header> -->
-    <meta name="description" content="aide à l'apprentissage des leçons un QCM">
+    <meta name="description" content="aide à l'apprentissage des leçons un QCM"> 
 
     <!-- rajouter un petit icon en haut à gauche <header> -->
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
-    
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"> 
 
-    <title>Game page</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet"> <!-- Importe la police Roboto depuis Google Fonts -->
+
+    <title>Game page</title> <!-- Donne le titre du document qui s'affiche dans l'onglet du navigateur -->
 </head>
-<body>
-    <header></header>
-    <main>
-
-        <div class="container">
-            <div id="game" class="flex-column flex-center">
-                <div class="hud-item">
+<body> <!-- Contient le contenu visible du document -->
+ 
+    <main> 
+        <div class="container"> 
+            <div id="game" class="flex-column flex-center"> 
+                <div class="hud-item"> 
                     <p id="progreeText" class="hud-prefix">
-                        question
+                            question
                     </p>
-                    <div id="progressBar">
-                        <div id="progreesBarFull"></div>
-                    </div>
+                    <div id="progressBar"> 
                 </div> 
-                <div class="hud-item">
-                    <p class="hud-prefix">
+                <div class="hud-item"> 
+                    <p class="hud-prefix"> 
                         Score
                     </p>
-                    <h1 class="hud-main-text" id="score">
+                    <h1 class="hud-main-text" id="score"> 
                         0
                     </h1>
                 </div>
             </div>
-            <div id="question">Quel est la réponse à cette question ?</div>
-            <div class="choice-container">
+            <h1 id="question">Quel est la réponse à cette question ?</h1> 
+            <div class="choice-container"> 
                 <P class="choice-prefix">A</p>
-                <P class="choice-text" data-number="1">choice 1</p>
+                <P class="choice-text" data-number="1">choice 1</p> 
             </div>
-            <div class="choice-container">
-                <P class="choice-prefix">B</p>
+            <div class="choice-container"> 
+                <P class="choice-prefix">B</p> 
                 <P class="choice-text" data-number="2">choice 2 </p>
             </div>
-            <div class="choice-container">
-                <P class="choice-prefix">c</p>
-                <P class="choice-text" data-number="3">choice 3</p>
+            <div class="choice-container"> 
+                <P class="choice-prefix">c</p> 
+                <P class="choice-text" data-number="3">choice 3</p> 
             </div>
-            <div class="choice-container">
-                <P class="choice-prefix">D</p>
-                <P class="choice-text" data-number="4">choice 4</p>
+            <div class="choice-container"> 
+                <P class="choice-prefix">D</p> 
+                <P class="choice-text" data-number="4">choice 4</p> 
             </div>
         </div>
       
     </main>
-    <footer></footer>
-    <script>src="game.js"</script><!--23:29-->
+    <footer></footer> <!-- Définit le pied de page du document -->
+    <script>src="game.js"</script>
 </body>
 </html>
