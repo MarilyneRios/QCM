@@ -1,32 +1,49 @@
 /*racine du doc HTML, pour définir les variables CSS*/
 :root{
     background-color: #313333;
+    color: #fff;
+    font-size: 14px;
 }
 
 *{
     box-sizing: border-box;
     margin:0;
     padding: 0;
-    font-size: 62,5%;
-    font-family: roboto, "sans-serif", cursive;
+    font-family:Georgia, 'Times New Roman', Times, serif
+}
+body{
+    width: 100vw;
+    height: 100vh;
 }
 
 h1{
-    font-size: 5.4rem;
-    color: #fff;
-    margin-bottom: 5rem;
+    font-size: 3rem;
+    margin-bottom: 3rem;
+}
+ p{
+    font-size: 1.5rem;
+    font-style: italic;
+    text-justify: auto;
+    line-height: 2rem;
+    margin-bottom: 1rem;
+    
+ }
+.presentation{
+    border: thick double #32a1ce;
+    padding: 1rem;
+    margin-top: 1rem;
+    border-radius:10px;
+    text-align: center;
 }
 
 .container{
-    width: 100wv;
-    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;/*axe horizontal*/
     align-items: center; /*axe vertical*/
     max-width: 80rem; /*80 fois la taille de la police de la racine*/
     margin: 0 auto;
-    padding: 2rem;
+    padding: 1rem;
 }
 
 .flex-column{
@@ -39,7 +56,7 @@ h1{
     align-items: center;
     text-align: center;
     padding: 1rem;
-    margin: 2rem;
+    margin: 1rem;
 }
 
 .text-center{
@@ -51,9 +68,9 @@ h1{
 }
 
 .btn{
-    font-size: 3rem;
+    font-size: 2rem;
     font-weight: bold;
-    padding: 2rem 0;
+    padding: 1.5rem 0;
     width: 20rem;
     text-align: center;
     border-radius:10px;
@@ -68,7 +85,7 @@ h1{
     transform: scale(1.20); /*grossissement*/
 }
 
-.btn[disabled]:hover{ /* cible tous les éléments avec la classe "btn" et l'attribut "disabled" défini.*/
+.btn[disabled]:hover{ 
     cursor: not-allowed;/* lorsque l'utilisateur survole un bouton désactivé*/
     transform: none;
 }
@@ -81,4 +98,16 @@ h1{
 #highscrores__btn{
     background: linear-gradient(90deg, rgb(121, 118, 35) 0%, rgb(215, 195, 62));
   
+}
+
+@media screen  and (max-width: 780px){
+    .choice-container{
+        min-width: 25rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+   
+   
 }

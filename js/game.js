@@ -1,13 +1,13 @@
 // Sélection des éléments HTML requis
-const question = document.querySelector('#question');
-const choices = Array.from(document.querySelectorAll('.choice-text'));
-const progressText = document.querySelector('#progressText');
-const scoreText = document.querySelector('#score');
-const progressBarFull = document.querySelector('#progressBarFull');
+const question = document.getElementById('question');
+const choices = Array.from(document.getElementsByClassName('choice-text'));
+const progressText = document.getElementById('progressText');
+const scoreText = document.getElementById('score');
+const progressBarFull = document.getElementById('progressBarFull');
 
 // Variables pour suivre l'état du jeu
 let currentQuestion = {};
-let acceptingAnswers = true;
+let acceptingAnswers = false;
 let score = 0;
 let questionCounter = 0;
 let availableQuestions = [];
@@ -74,13 +74,13 @@ let questions = [
         choice1: `10 décembre 1790`,
         choice2: `10 septembre 1799 `,
         choice3: `22 septembre 1792`,
-        choice4: `2 décembre 11791`,
+        choice4: `2 décembre 1791`,
         answer: `22 septembre 1792`,
     },
     {
         question: ` Prise des Tuleries ?`,
         choice1: `10 août 1792`,
-        choice2: `114novembre 1799`,
+        choice2: `11 novembre 1799`,
         choice3: `12 novembre 1795`,
         choice4: `2 décembre 1790`,
         answer: `10 août 1792`,
@@ -97,30 +97,28 @@ let questions = [
 ]
 
 // Constantes pour le score et le nombre maximum de questions
-const SCORE_POINTS = 100;
+const SCORE_POINTS = 20;
 const MAX_QUESTIONS = 5;
 
-// Fonction pour démarrer le jeu
-const startGame = () => {
-    questionCounter = 0;
-    score = 0;
-    availableQuestions = [...questions];
-    getNewQuestion();
-};
 
 // Fonction pour obtenir une nouvelle question
 const getNewQuestion = () => {
     // Vérifier si toutes les questions ont été posées ou si le nombre maximum de questions est atteint
-    if (availableQuestions.length === 0 || questionCounter > MAX_QUESTIONS) {
+    if (availableQuestions.length === 0 || questionCounter >= MAX_QUESTIONS) {
         // Enregistrer le score et rediriger vers la page de fin
         localStorage.setItem('mostRecentScore', score);
+        //rediriger vers  end.html
         return window.location.assign('/end.html');
     }
 
     // Incrémenter le compteur de question et mettre à jour l'affichage de la progression
     questionCounter++;
     progressText.innerText = `Question ${questionCounter} of ${MAX_QUESTIONS}`;
-    progressBarFull.style.width = `${(questionCounter / MAX_QUESTIONS) * 100}%`;
+    // Réinitialiser la largeur de la barre de progression à 0% au début de chaque question
+    progressBarFull.style.width = '0%';
+
+    // Augmenter la largeur de la barre de progression de `(questionCounter / MAX_QUESTIONS) * 20rem` à chaque fois
+    progressBarFull.style.width = `${(questionCounter / MAX_QUESTIONS) * 20}rem`;
 
     // Sélectionner une question aléatoire parmi les questions disponibles
     const questionIndex = Math.floor(Math.random() * availableQuestions.length);
@@ -128,11 +126,11 @@ const getNewQuestion = () => {
     question.innerText = currentQuestion.question;//
 
     // Afficher les choix pour la question actuelle
-    choices.forEach(choice => {
-        //const number = choice.dataset['number']; // ou choice.dataset['number']
-        const number = parseInt(choice.dataset.number);
+    choices.forEach((choice) => {
+        const number = choice.dataset['number'];
         choice.innerText = currentQuestion['choice' + number];
     });
+
 
     // Retirer la question sélectionnée des questions disponibles
     availableQuestions.splice(questionIndex, 1);
@@ -147,27 +145,30 @@ const getNewQuestion = () => {
 // Écouter les clics sur les choix et gérer les réponses
 choices.forEach(choice => {
     choice.addEventListener('click', e => {
-        if (!acceptingAnswers) return
+        if (!acceptingAnswers) return;
 
         acceptingAnswers = false;
         const selectedChoice = e.target;
-        const selectedAnswer = parseInt(selectedChoice.dataset.number);
-       // const selectedAnswer = selectedChoice.dataset['number'];// ou dataset['number']
+        const selectedAnswer = selectedChoice.dataset.number;
 
        console.log('Choix sélectionné :', selectedAnswer);
 
-        // Vérifier si la réponse sélectionnée est correcte ou incorrecte
+
+     // Vérifier si la réponse sélectionnée est correcte ou incorrecte
         let classToApply = selectedAnswer === currentQuestion.answer ? 'correct' : 'incorrect';
 
-        console.log('Classe appliquée :', classToApply); 
+        // Affichage dans la console de la couleur sélectionnée
+        console.log('Couleur appliquée :', classToApply);
 
-        // Si la réponse est correcte, incrémenter le score
+     // Si la réponse est correcte, incrémenter le score
         if (classToApply === 'correct') {
             incrementScore(SCORE_POINTS);
         }
 
         // Appliquer une classe pour indiquer si la réponse est correcte ou incorrecte
         selectedChoice.parentElement.classList.add(classToApply);
+        
+        console.log('Classe appliquée :', classToApply); 
 
         // Retarder l'affichage de la prochaine question
         setTimeout(() => {
@@ -176,6 +177,14 @@ choices.forEach(choice => {
         }, 1000);
     });
 });
+
+    // Fonction pour démarrer le jeu
+    const startGame = () => {
+        questionCounter = 0;
+        score = 0;
+        availableQuestions = [...questions];
+        getNewQuestion();
+    };
 
 // Fonction pour incrémenter le score
  incrementScore = num => {
