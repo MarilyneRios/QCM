@@ -19,7 +19,7 @@ let questions = [
         choice2: '14 juillet 1789',
         choice3: '11 juillet 1789',
         choice4: '14 juillet 1788',
-        answer: '14 juillet 1789',
+        answer: 2,
     },
     {
         question: `Abolition des privilèges et fin de l’Ancien Régime ?`,
@@ -27,7 +27,7 @@ let questions = [
         choice2: `8 août 1789`,
         choice3: `1 août 1789`,
         choice4: `5 août 1789`,
-        answer: `4 août 1789`,
+        answer: 1,
     },
     {
         question: ` Déclaration des droits de l’homme ?`,
@@ -35,7 +35,7 @@ let questions = [
         choice2: `26 août 1789`,
         choice3: `24 août 1789`,
         choice4: `26 août 1788`,
-        answer: `26 août 1789`,
+        answer: 2,
     },
     {
         question: ` Monarchie constitutionnelle`,
@@ -43,7 +43,7 @@ let questions = [
         choice2: `1788-1792`,
         choice3: `1789-1791`,
         choice4: `1789-1792`,
-        answer: `1789-1792`,
+        answer: 4,
     },
     {
         question: `La Convention abolit l’esclavage ?`,
@@ -51,7 +51,7 @@ let questions = [
         choice2: `14 mars 1794`,
         choice3: `14 janvier 1794`,
         choice4: `14 avril 1794`,
-        answer: `14 février 1794`,
+        answer: 1,
     },
     {
         question: ` Sacre de Napoléon et début de l’Empire ?`,
@@ -59,7 +59,7 @@ let questions = [
         choice2: `10 novembre 1799`,
         choice3: `2 novembre 1804`,
         choice4: `2 décembre 1804`,
-        answer: `2 décembre 1804`,
+        answer: 4,
     },
     {
         question: ` La fuite de Varennes?`,
@@ -67,7 +67,7 @@ let questions = [
         choice2: `21 juillet 1791`,
         choice3: `14 juillet 1789`,
         choice4: `21 juin 1789`,
-        answer: `21 juin 1789`,
+        answer: 4,
     },
     {
         question: ` Proclamation de la République?`,
@@ -75,7 +75,7 @@ let questions = [
         choice2: `10 septembre 1799 `,
         choice3: `22 septembre 1792`,
         choice4: `2 décembre 1791`,
-        answer: `22 septembre 1792`,
+        answer: 3,
     },
     {
         question: ` Prise des Tuleries ?`,
@@ -83,7 +83,7 @@ let questions = [
         choice2: `11 novembre 1799`,
         choice3: `12 novembre 1795`,
         choice4: `2 décembre 1790`,
-        answer: `10 août 1792`,
+        answer: 1,
     },
     {
         question: ` Mort de Robespierre ?`,
@@ -91,13 +91,13 @@ let questions = [
         choice2: `10 novembre 1794`,
         choice3: `27 juillet 1794`,
         choice4: `22 juillet 1794`,
-        answer: `27 juillet 1794`,
+        answer: 3,
     },
 
 ]
 
 // Constantes pour le score et le nombre maximum de questions
-const SCORE_POINTS = 20;
+const SCORE_POINTS = 2;
 const MAX_QUESTIONS = 5;
 
 
@@ -105,6 +105,7 @@ const MAX_QUESTIONS = 5;
 const getNewQuestion = () => {
     // Vérifier si toutes les questions ont été posées ou si le nombre maximum de questions est atteint
     if (availableQuestions.length === 0 || questionCounter >= MAX_QUESTIONS) {
+
         // Enregistrer le score et rediriger vers la page de fin
         localStorage.setItem('mostRecentScore', score);
         //rediriger vers  end.html
@@ -142,6 +143,13 @@ const getNewQuestion = () => {
     console.log('Available Questions:', availableQuestions);
 };
 
+// Fonction pour incrémenter le score
+function incrementScore (num) {
+    score += num;
+    scoreText.innerText = score;
+    console.log('Score incrémenté de :', num);
+};
+
 // Écouter les clics sur les choix et gérer les réponses
 choices.forEach(choice => {
     choice.addEventListener('click', e => {
@@ -149,18 +157,17 @@ choices.forEach(choice => {
 
         acceptingAnswers = false;
         const selectedChoice = e.target;
-        const selectedAnswer = selectedChoice.dataset.number;
-
-       console.log('Choix sélectionné :', selectedAnswer);
-
-
-     // Vérifier si la réponse sélectionnée est correcte ou incorrecte
-        let classToApply = selectedAnswer === currentQuestion.answer ? 'correct' : 'incorrect';
+        const selectedAnswer = Number(selectedChoice.dataset.number);
+        console.log('Réponse sélectionnée :', typeof selectedAnswer, selectedAnswer);
+        console.log('La réponse attendue :', typeof currentQuestion.answer, currentQuestion.answer);
+        
+        // Vérifier si la réponse sélectionnée est correcte ou incorrecte
+        let classToApply = selectedAnswer === Number(currentQuestion.answer) ? 'correct' : 'incorrect';
 
         // Affichage dans la console de la couleur sélectionnée
         console.log('Couleur appliquée :', classToApply);
 
-     // Si la réponse est correcte, incrémenter le score
+        // Si la réponse est correcte, incrémenter le score
         if (classToApply === 'correct') {
             incrementScore(SCORE_POINTS);
         }
@@ -178,6 +185,7 @@ choices.forEach(choice => {
     });
 });
 
+
     // Fonction pour démarrer le jeu
     const startGame = () => {
         questionCounter = 0;
@@ -186,12 +194,8 @@ choices.forEach(choice => {
         getNewQuestion();
     };
 
-// Fonction pour incrémenter le score
- incrementScore = num => {
-    score += num;
-    scoreText.innerText = score;
-    console.log('Score incrémenté de :', num);
-};
+
+
 
 // Démarrer le jeu au chargement de la page
 startGame();

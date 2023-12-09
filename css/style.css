@@ -32,6 +32,7 @@ h1{
     border: thick double #32a1ce;
     padding: 1rem;
     margin-top: 1rem;
+    margin-bottom: 1rem;
     border-radius:10px;
     text-align: center;
 }
@@ -90,14 +91,21 @@ h1{
     transform: none;
 }
 
-#play{
+#play {
     background: linear-gradient(90deg, rgb(18,92,255)0%, rgb(20, 73, 153)100% );
-   
 }
 
-#highscrores__btn{
+#game_btn {
+    background: linear-gradient(90deg, rgb(18,92,255)0%, rgb(20, 73, 153)100% );
+
+}
+#end_btn {
     background: linear-gradient(90deg, rgb(121, 118, 35) 0%, rgb(215, 195, 62));
-  
+}
+
+#home_btn{
+    background: linear-gradient(90deg, rgb(121, 118, 35) 0%, rgb(215, 195, 62));
+
 }
 
 @media screen  and (max-width: 780px){
