@@ -5,4 +5,4 @@ const mostRecentScore = localStorage.getItem('mostRecentScore');
 const finalScore = document.getElementById('finalScore');
 
 // Afficher le score dans l'élément correspondant
-finalScore.innerText = `Ton score final est de ${mostRecentScore} points`;
+finalScore.innerText = `Ton score final est de : ${mostRecentScore} points.`;

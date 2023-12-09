@@ -107,6 +107,10 @@ h1{
     background: linear-gradient(90deg, rgb(121, 118, 35) 0%, rgb(215, 195, 62));
 
 }
+#exemple{
+    width: 30rem;
+    height: 8rem;
+}
 
 @media screen  and (max-width: 780px){
     .choice-container{
