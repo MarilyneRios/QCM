@@ -120,6 +120,10 @@ h1{
         align-items: center;
         justify-content: center;
     }
-   
-   
+   .presentation{
+    min-width: 20rem;
+   }
+   #exemple{
+    min-width: 15rem;
+   }
 }
