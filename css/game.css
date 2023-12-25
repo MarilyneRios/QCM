@@ -124,5 +124,13 @@ body{
         align-items: center;
         
     }
-   
+    .choice-prefix {
+        padding: 5px 10px;
+    }
+    
+    .choice-text {
+        padding: 5px 10px;
+        width: 100%;
+    }
+    
 }
