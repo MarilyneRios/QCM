@@ -121,8 +121,12 @@ h1{
         justify-content: center;
     }
    .presentation{
-    min-width: 5rem;
+    max-width: 90%;
    
    }
+   img {
+    width: 100%;
+    height: auto;
+}
 
 }
